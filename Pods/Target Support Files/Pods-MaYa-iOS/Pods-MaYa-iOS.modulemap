@@ -1,0 +1,6 @@
+framework module Pods_MaYa_iOS {
+  umbrella header "Pods-MaYa-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

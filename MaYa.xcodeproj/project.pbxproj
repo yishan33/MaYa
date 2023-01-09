@@ -1,0 +1,708 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D09BFD9CD11F7E779606136 /* Pods_MaYa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9178AA2493360355D6C1C2 /* Pods_MaYa.framework */; };
+		16B41B833A86FB4EE294E338 /* Pods_MaYa_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F317A8A661D231A4538CE1 /* Pods_MaYa_iOS.framework */; };
+		8417148C296B7DF400D74344 /* MYWebSocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417148B296B7DF400D74344 /* MYWebSocketViewModel.swift */; };
+		8417148D296B7DF400D74344 /* MYWebSocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8417148B296B7DF400D74344 /* MYWebSocketViewModel.swift */; };
+		84E307E7296A772E00261530 /* MaYaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E307E6296A772E00261530 /* MaYaApp.swift */; };
+		84E307E9296A772E00261530 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E307E8296A772E00261530 /* ContentView.swift */; };
+		84E307EB296A772E00261530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E307EA296A772E00261530 /* Assets.xcassets */; };
+		84E307EE296A772F00261530 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E307ED296A772F00261530 /* Preview Assets.xcassets */; };
+		84E30807296A780800261530 /* PTHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E307F9296A780800261530 /* PTHelper.swift */; };
+		84E30808296A780800261530 /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E307FB296A780800261530 /* PTUSBHub.m */; };
+		84E30809296A780800261530 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E307FC296A780800261530 /* PTProtocol.m */; };
+		84E3080A296A780800261530 /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E307FF296A780800261530 /* PTChannel.m */; };
+		84E3080B296A780800261530 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84E30803296A780800261530 /* LICENSE.txt */; };
+		84E3080C296A780800261530 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84E30805296A780800261530 /* Info.plist */; };
+		84E3080D296A780800261530 /* PTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E30806296A780800261530 /* PTManager.swift */; };
+		84E3080F296A7B5400261530 /* MYViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3080E296A7B5400261530 /* MYViewModel.swift */; };
+		84E30817296ABBC800261530 /* MaYa_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E30816296ABBC800261530 /* MaYa_iOSApp.swift */; };
+		84E30819296ABBC800261530 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E30818296ABBC800261530 /* ContentView.swift */; };
+		84E3081B296ABBCA00261530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E3081A296ABBCA00261530 /* Assets.xcassets */; };
+		84E3081E296ABBCA00261530 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E3081D296ABBCA00261530 /* Preview Assets.xcassets */; };
+		84E30823296ABCB000261530 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E30822296ABCB000261530 /* Helper.swift */; };
+		84E30824296ABCB000261530 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E30822296ABCB000261530 /* Helper.swift */; };
+		84E30826296ABEC800261530 /* MYChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E30825296ABEC800261530 /* MYChatView.swift */; };
+		84E30827296ABEC800261530 /* MYChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E30825296ABEC800261530 /* MYChatView.swift */; };
+		84E30828296AC2CE00261530 /* MYViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3080E296A7B5400261530 /* MYViewModel.swift */; };
+		84E30829296AC2D800261530 /* PTHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E307F9296A780800261530 /* PTHelper.swift */; };
+		84E3082A296AC2DB00261530 /* PTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E30806296A780800261530 /* PTManager.swift */; };
+		84E3082B296AC2E000261530 /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E307FF296A780800261530 /* PTChannel.m */; };
+		84E3082C296AC2E400261530 /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E307FB296A780800261530 /* PTUSBHub.m */; };
+		84E3082D296AC2E900261530 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E307FC296A780800261530 /* PTProtocol.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		50F317A8A661D231A4538CE1 /* Pods_MaYa_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaYa_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CFF6A2C6A63C6CDE11E77AC /* Pods-MaYa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaYa.debug.xcconfig"; path = "Target Support Files/Pods-MaYa/Pods-MaYa.debug.xcconfig"; sourceTree = "<group>"; };
+		813D9852ED27844CD69A83E8 /* Pods-MaYa-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaYa-iOS.debug.xcconfig"; path = "Target Support Files/Pods-MaYa-iOS/Pods-MaYa-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		8417148B296B7DF400D74344 /* MYWebSocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYWebSocketViewModel.swift; sourceTree = "<group>"; };
+		84E307E3296A772E00261530 /* MaYa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaYa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84E307E6296A772E00261530 /* MaYaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaYaApp.swift; sourceTree = "<group>"; };
+		84E307E8296A772E00261530 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		84E307EA296A772E00261530 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84E307ED296A772F00261530 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		84E307EF296A772F00261530 /* MaYa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MaYa.entitlements; sourceTree = "<group>"; };
+		84E307F5296A77C900261530 /* MaYa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MaYa-Bridging-Header.h"; sourceTree = "<group>"; };
+		84E307F9296A780800261530 /* PTHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTHelper.swift; sourceTree = "<group>"; };
+		84E307FB296A780800261530 /* PTUSBHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUSBHub.m; sourceTree = "<group>"; };
+		84E307FC296A780800261530 /* PTProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProtocol.m; sourceTree = "<group>"; };
+		84E307FD296A780800261530 /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = "<group>"; };
+		84E307FE296A780800261530 /* Peertalk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peertalk.h; sourceTree = "<group>"; };
+		84E307FF296A780800261530 /* PTChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTChannel.m; sourceTree = "<group>"; };
+		84E30800296A780800261530 /* PTPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPrivate.h; sourceTree = "<group>"; };
+		84E30801296A780800261530 /* PTProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProtocol.h; sourceTree = "<group>"; };
+		84E30802296A780800261530 /* PTUSBHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUSBHub.h; sourceTree = "<group>"; };
+		84E30803296A780800261530 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		84E30804296A780800261530 /* PTChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTChannel.h; sourceTree = "<group>"; };
+		84E30805296A780800261530 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84E30806296A780800261530 /* PTManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTManager.swift; sourceTree = "<group>"; };
+		84E3080E296A7B5400261530 /* MYViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYViewModel.swift; sourceTree = "<group>"; };
+		84E30814296ABBC800261530 /* MaYa-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MaYa-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84E30816296ABBC800261530 /* MaYa_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaYa_iOSApp.swift; sourceTree = "<group>"; };
+		84E30818296ABBC800261530 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		84E3081A296ABBCA00261530 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84E3081D296ABBCA00261530 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		84E30822296ABCB000261530 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		84E30825296ABEC800261530 /* MYChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYChatView.swift; sourceTree = "<group>"; };
+		8C9178AA2493360355D6C1C2 /* Pods_MaYa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaYa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B160332BBF1D4EC7A0E073D /* Pods-MaYa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaYa.release.xcconfig"; path = "Target Support Files/Pods-MaYa/Pods-MaYa.release.xcconfig"; sourceTree = "<group>"; };
+		AA3B93BE66C92E86809E50C7 /* Pods-MaYa-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaYa-iOS.release.xcconfig"; path = "Target Support Files/Pods-MaYa-iOS/Pods-MaYa-iOS.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84E307E0296A772E00261530 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D09BFD9CD11F7E779606136 /* Pods_MaYa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84E30811296ABBC800261530 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16B41B833A86FB4EE294E338 /* Pods_MaYa_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		84E307DA296A772E00261530 = {
+			isa = PBXGroup;
+			children = (
+				84E307FA296A780800261530 /* peertalk */,
+				84E307E5296A772E00261530 /* MaYa */,
+				84E30815296ABBC800261530 /* MaYa-iOS */,
+				84E307E4296A772E00261530 /* Products */,
+				ACD0CBFB28D3B45A788F4464 /* Pods */,
+				F2836D5D6E4D74AA36F66A1A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		84E307E4296A772E00261530 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84E307E3296A772E00261530 /* MaYa.app */,
+				84E30814296ABBC800261530 /* MaYa-iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84E307E5296A772E00261530 /* MaYa */ = {
+			isa = PBXGroup;
+			children = (
+				84E307E6296A772E00261530 /* MaYaApp.swift */,
+				84E307E8296A772E00261530 /* ContentView.swift */,
+				84E307EA296A772E00261530 /* Assets.xcassets */,
+				84E307EF296A772F00261530 /* MaYa.entitlements */,
+				84E307EC296A772F00261530 /* Preview Content */,
+			);
+			path = MaYa;
+			sourceTree = "<group>";
+		};
+		84E307EC296A772F00261530 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				84E307ED296A772F00261530 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		84E307FA296A780800261530 /* peertalk */ = {
+			isa = PBXGroup;
+			children = (
+				84E30803296A780800261530 /* LICENSE.txt */,
+				84E30805296A780800261530 /* Info.plist */,
+				84E307F5296A77C900261530 /* MaYa-Bridging-Header.h */,
+				84E307FD296A780800261530 /* prefix.pch */,
+				84E307FE296A780800261530 /* Peertalk.h */,
+				84E30800296A780800261530 /* PTPrivate.h */,
+				84E30801296A780800261530 /* PTProtocol.h */,
+				84E307FC296A780800261530 /* PTProtocol.m */,
+				84E30802296A780800261530 /* PTUSBHub.h */,
+				84E307FB296A780800261530 /* PTUSBHub.m */,
+				84E30804296A780800261530 /* PTChannel.h */,
+				84E307FF296A780800261530 /* PTChannel.m */,
+				84E30806296A780800261530 /* PTManager.swift */,
+				84E307F9296A780800261530 /* PTHelper.swift */,
+				84E30822296ABCB000261530 /* Helper.swift */,
+				84E30825296ABEC800261530 /* MYChatView.swift */,
+				84E3080E296A7B5400261530 /* MYViewModel.swift */,
+				8417148B296B7DF400D74344 /* MYWebSocketViewModel.swift */,
+			);
+			path = peertalk;
+			sourceTree = "<group>";
+		};
+		84E30815296ABBC800261530 /* MaYa-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				84E30816296ABBC800261530 /* MaYa_iOSApp.swift */,
+				84E30818296ABBC800261530 /* ContentView.swift */,
+				84E3081A296ABBCA00261530 /* Assets.xcassets */,
+				84E3081C296ABBCA00261530 /* Preview Content */,
+			);
+			path = "MaYa-iOS";
+			sourceTree = "<group>";
+		};
+		84E3081C296ABBCA00261530 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				84E3081D296ABBCA00261530 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ACD0CBFB28D3B45A788F4464 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7CFF6A2C6A63C6CDE11E77AC /* Pods-MaYa.debug.xcconfig */,
+				9B160332BBF1D4EC7A0E073D /* Pods-MaYa.release.xcconfig */,
+				813D9852ED27844CD69A83E8 /* Pods-MaYa-iOS.debug.xcconfig */,
+				AA3B93BE66C92E86809E50C7 /* Pods-MaYa-iOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F2836D5D6E4D74AA36F66A1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C9178AA2493360355D6C1C2 /* Pods_MaYa.framework */,
+				50F317A8A661D231A4538CE1 /* Pods_MaYa_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84E307E2296A772E00261530 /* MaYa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84E307F2296A772F00261530 /* Build configuration list for PBXNativeTarget "MaYa" */;
+			buildPhases = (
+				356BFDDEABE391581E29398B /* [CP] Check Pods Manifest.lock */,
+				84E307DF296A772E00261530 /* Sources */,
+				84E307E0296A772E00261530 /* Frameworks */,
+				84E307E1296A772E00261530 /* Resources */,
+				8CF43497D77218BDF81B51CB /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MaYa;
+			productName = MaYa;
+			productReference = 84E307E3296A772E00261530 /* MaYa.app */;
+			productType = "com.apple.product-type.application";
+		};
+		84E30813296ABBC800261530 /* MaYa-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84E3081F296ABBCA00261530 /* Build configuration list for PBXNativeTarget "MaYa-iOS" */;
+			buildPhases = (
+				C73BB56F3A4B4E37BEFE5B7A /* [CP] Check Pods Manifest.lock */,
+				84E30810296ABBC800261530 /* Sources */,
+				84E30811296ABBC800261530 /* Frameworks */,
+				84E30812296ABBC800261530 /* Resources */,
+				874BE3DC7119E31911F55DDF /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MaYa-iOS";
+			productName = "MaYa-iOS";
+			productReference = 84E30814296ABBC800261530 /* MaYa-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84E307DB296A772E00261530 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					84E307E2296A772E00261530 = {
+						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
+					};
+					84E30813296ABBC800261530 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = 84E307DE296A772E00261530 /* Build configuration list for PBXProject "MaYa" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 84E307DA296A772E00261530;
+			productRefGroup = 84E307E4296A772E00261530 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84E307E2296A772E00261530 /* MaYa */,
+				84E30813296ABBC800261530 /* MaYa-iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84E307E1296A772E00261530 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84E3080C296A780800261530 /* Info.plist in Resources */,
+				84E3080B296A780800261530 /* LICENSE.txt in Resources */,
+				84E307EE296A772F00261530 /* Preview Assets.xcassets in Resources */,
+				84E307EB296A772E00261530 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84E30812296ABBC800261530 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84E3081E296ABBCA00261530 /* Preview Assets.xcassets in Resources */,
+				84E3081B296ABBCA00261530 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		356BFDDEABE391581E29398B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MaYa-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		874BE3DC7119E31911F55DDF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MaYa-iOS/Pods-MaYa-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MaYa-iOS/Pods-MaYa-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MaYa-iOS/Pods-MaYa-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CF43497D77218BDF81B51CB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MaYa/Pods-MaYa-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MaYa/Pods-MaYa-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MaYa/Pods-MaYa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C73BB56F3A4B4E37BEFE5B7A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MaYa-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84E307DF296A772E00261530 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84E30826296ABEC800261530 /* MYChatView.swift in Sources */,
+				84E307E9296A772E00261530 /* ContentView.swift in Sources */,
+				84E3080A296A780800261530 /* PTChannel.m in Sources */,
+				84E307E7296A772E00261530 /* MaYaApp.swift in Sources */,
+				84E30808296A780800261530 /* PTUSBHub.m in Sources */,
+				8417148C296B7DF400D74344 /* MYWebSocketViewModel.swift in Sources */,
+				84E3080D296A780800261530 /* PTManager.swift in Sources */,
+				84E30823296ABCB000261530 /* Helper.swift in Sources */,
+				84E30807296A780800261530 /* PTHelper.swift in Sources */,
+				84E3080F296A7B5400261530 /* MYViewModel.swift in Sources */,
+				84E30809296A780800261530 /* PTProtocol.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84E30810296ABBC800261530 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84E30828296AC2CE00261530 /* MYViewModel.swift in Sources */,
+				84E30829296AC2D800261530 /* PTHelper.swift in Sources */,
+				84E30827296ABEC800261530 /* MYChatView.swift in Sources */,
+				84E3082B296AC2E000261530 /* PTChannel.m in Sources */,
+				84E30819296ABBC800261530 /* ContentView.swift in Sources */,
+				8417148D296B7DF400D74344 /* MYWebSocketViewModel.swift in Sources */,
+				84E3082A296AC2DB00261530 /* PTManager.swift in Sources */,
+				84E30817296ABBC800261530 /* MaYa_iOSApp.swift in Sources */,
+				84E3082C296AC2E400261530 /* PTUSBHub.m in Sources */,
+				84E30824296ABCB000261530 /* Helper.swift in Sources */,
+				84E3082D296AC2E900261530 /* PTProtocol.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		84E307F0296A772F00261530 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		84E307F1296A772F00261530 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		84E307F3296A772F00261530 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CFF6A2C6A63C6CDE11E77AC /* Pods-MaYa.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MaYa/MaYa.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MaYa/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forthonliu.MaYa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "peertalk/MaYa-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		84E307F4296A772F00261530 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B160332BBF1D4EC7A0E073D /* Pods-MaYa.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MaYa/MaYa.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MaYa/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forthonliu.MaYa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "peertalk/MaYa-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		84E30820296ABBCA00261530 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 813D9852ED27844CD69A83E8 /* Pods-MaYa-iOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MaYa-iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = YP2K3FYV32;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forthonliu.qyBranch2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = qyBranch2Provision;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "peertalk/MaYa-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84E30821296ABBCA00261530 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA3B93BE66C92E86809E50C7 /* Pods-MaYa-iOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MaYa-iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = YP2K3FYV32;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.forthonliu.qyBranch2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = qyBranch2Provision;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "peertalk/MaYa-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84E307DE296A772E00261530 /* Build configuration list for PBXProject "MaYa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84E307F0296A772F00261530 /* Debug */,
+				84E307F1296A772F00261530 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84E307F2296A772F00261530 /* Build configuration list for PBXNativeTarget "MaYa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84E307F3296A772F00261530 /* Debug */,
+				84E307F4296A772F00261530 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84E3081F296ABBCA00261530 /* Build configuration list for PBXNativeTarget "MaYa-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84E30820296ABBCA00261530 /* Debug */,
+				84E30821296ABBCA00261530 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 84E307DB296A772E00261530 /* Project object */;
+}
