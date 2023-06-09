@@ -31,6 +31,8 @@ FOUNDATION_EXPORT NSString * const PTProtocolErrorDomain;
 // Queue on which to run data processing blocks.
 @property dispatch_queue_t queue;
 
+@property (nonatomic, strong) dispatch_io_t dispatch_channel;
+
 // Get the shared protocol object for *queue*
 + (PTProtocol*)sharedProtocolForQueue:(dispatch_queue_t)queue;
 

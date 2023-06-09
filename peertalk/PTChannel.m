@@ -49,14 +49,14 @@ static const uint8_t kUserInfoKey;
 
 #pragma mark -
 @interface PTData ()
-- (id)initWithMappedDispatchData:(dispatch_data_t)mappedContiguousData data:(void*)data length:(size_t)length;
+
 @end
 
 #pragma mark -
 @interface PTAddress () {
   struct sockaddr_storage sockaddr_;
 }
-- (id)initWithSockaddr:(const struct sockaddr_storage*)addr;
+
 @end
 
 #pragma mark -
@@ -91,10 +91,6 @@ static const uint8_t kUserInfoKey;
 
 
 - (void)dealloc {
-#if PT_DISPATCH_RETAIN_RELEASE
-  if (dispatchObj_channel_) dispatch_release(dispatchObj_channel_);
-  else if (dispatchObj_source_) dispatch_release(dispatchObj_source_);
-#endif
 }
 
 
@@ -127,10 +123,6 @@ static const uint8_t kUserInfoKey;
   dispatch_io_t prevChannel = dispatchObj_channel_;
   if (prevChannel != channel) {
     dispatchObj_channel_ = channel;
-#if PT_DISPATCH_RETAIN_RELEASE
-    if (dispatchObj_channel_) dispatch_retain(dispatchObj_channel_);
-    if (prevChannel) dispatch_release(prevChannel);
-#endif
     if (!dispatchObj_channel_ && !dispatchObj_source_) {
       connState_ = kConnStateNone;
     }
@@ -143,10 +135,6 @@ static const uint8_t kUserInfoKey;
   dispatch_source_t prevSource = dispatchObj_source_;
   if (prevSource != source) {
     dispatchObj_source_ = source;
-#if PT_DISPATCH_RETAIN_RELEASE
-    if (dispatchObj_source_) dispatch_retain(dispatchObj_source_);
-    if (prevSource) dispatch_release(prevSource);
-#endif
     if (!dispatchObj_channel_ && !dispatchObj_source_) {
       connState_ = kConnStateNone;
     }
@@ -179,16 +167,7 @@ static const uint8_t kUserInfoKey;
   }
 }
 
-
-//- (void)setFileDescriptor:(dispatch_fd_t)fd {
-//  [self setDispatchChannel:dispatch_io_create(DISPATCH_IO_STREAM, fd, protocol_.queue, ^(int error) {
-//    close(fd);
-//  })];
-//}
-
-
 #pragma mark - Connecting
-
 
 - (void)connectToPort:(int)port overUSBHub:(PTUSBHub*)usbHub deviceID:(NSNumber*)deviceID callback:(void(^)(NSError *error))callback {
   assert(protocol_ != NULL);
@@ -212,7 +191,6 @@ static const uint8_t kUserInfoKey;
     endError_ = nil;
   }];
 }
-
 
 - (void)connectToPort:(in_port_t)port IPv4Address:(in_addr_t)address callback:(void(^)(NSError *error, PTAddress *address))callback {
   assert(protocol_ != NULL);
@@ -240,8 +218,6 @@ static const uint8_t kUserInfoKey;
   addr.sin_len = sizeof(addr);
   addr.sin_family = AF_INET;
   addr.sin_port = htons(port);
-  //addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
-  //addr.sin_addr.s_addr = htonl(INADDR_ANY);
   addr.sin_addr.s_addr = htonl(address);
   
   // prevent SIGPIPE
@@ -251,6 +227,7 @@ static const uint8_t kUserInfoKey;
   // int socket, const struct sockaddr *address, socklen_t address_len
   if (connect(fd, (const struct sockaddr *)&addr, addr.sin_len) == -1) {
     //perror("connect");
+      NSLog(@"eetest connectToPort error: %@", @(port));
     error = errno;
     close(fd);
     if (callback) callback([[NSError alloc] initWithDomain:NSPOSIXErrorDomain code:error userInfo:nil], nil);
@@ -608,18 +585,12 @@ static const uint8_t kUserInfoKey;
 - (id)initWithMappedDispatchData:(dispatch_data_t)mappedContiguousData data:(void*)data length:(size_t)length {
   if (!(self = [super init])) return nil;
   dispatchData_ = mappedContiguousData;
-#if PT_DISPATCH_RETAIN_RELEASE
-  if (dispatchData_) dispatch_retain(dispatchData_);
-#endif
   data_ = data;
   length_ = length;
   return self;
 }
 
 - (void)dealloc {
-#if PT_DISPATCH_RETAIN_RELEASE
-  if (dispatchData_) dispatch_release(dispatchData_);
-#endif
   data_ = NULL;
   length_ = 0;
 }

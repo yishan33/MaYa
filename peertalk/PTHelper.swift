@@ -8,7 +8,17 @@
 
 import Foundation
 
+//let PORT_NUMBER = 4989
+
+#if os(iOS)
+
 let PORT_NUMBER = 4986
+
+#elseif os(OSX)
+
+let PORT_NUMBER = 4986
+
+#endif
 
 extension String {
     
@@ -42,7 +52,7 @@ extension DispatchData {
 enum PTType: UInt32 {
     case string = 100
     case number = 101
-    case dict = 102
+    case json = 102
     case image = 103
-    case chatInfo = 104
+    case pb = 104
 }

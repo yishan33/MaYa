@@ -8,3 +8,5 @@
 #import "PTProtocol.h"
 #import "PTUSBHub.h"
 #import "PTProtocol.h"
+#import "MYConnectChannel.h"
+#import "MYListenChannel.h"

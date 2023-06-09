@@ -25,21 +25,21 @@ struct MYChatView: View {
 //                .frame(width: 400, height: ScreenH / 2)
             HStack(spacing: 8) {
                 SendButton(title: "发送文字") {
-                    viewModel.sendMessage()
+//                    viewModel.sendMessage()
                 }
                 SendButton(title: "发送数字") {
-                    viewModel.sendNumber()
+//                    viewModel.sendNumber()
                 }
                 SendButton(title: "发送字典") {
                     viewModel.sendDictionary()
                 }
             }
             HStack(spacing: 8) {
-                SendButton(title: "ws发送文字") {
-                    
+                SendButton(title: "发送图片") {
+                    viewModel.sendTest()
                 }
-                SendButton(title: "发送语音") {
-                    viewModel.sendNumber()
+                SendButton(title: "发送请求") {
+                    viewModel.sendTest()
                 }
                 SendButton(title: "发送视频") {
                     viewModel.sendDictionary()

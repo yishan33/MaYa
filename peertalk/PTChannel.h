@@ -91,6 +91,8 @@
 @property (readonly) dispatch_data_t dispatchData;
 @property (readonly) void *data;
 @property (readonly) size_t length;
+
+- (id)initWithMappedDispatchData:(dispatch_data_t)mappedContiguousData data:(void*)data length:(size_t)length;
 @end
 
 
@@ -100,6 +102,8 @@
 @property (readonly) NSString *name;
 // For network addresses, this is the port number. Otherwise 0 (zero).
 @property (readonly) NSInteger port;
+
+- (id)initWithSockaddr:(const struct sockaddr_storage*)addr;
 @end
 
 

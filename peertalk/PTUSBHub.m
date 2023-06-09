@@ -307,9 +307,6 @@ static NSString *kPlistPacketTypeConnect = @"Connect";
 - (void)dealloc {
   //NSLog(@"dealloc %@", self);
   if (channel_) {
-#if PT_DISPATCH_RETAIN_RELEASE
-    dispatch_release(channel_);
-#endif
     channel_ = nil;
   }
 }
@@ -493,9 +490,6 @@ static NSString *kPlistPacketTypeConnect = @"Connect";
     PT_PRECISE_LIFETIME_UNUSED dispatch_data_t map_data = dispatch_data_create_map(data, (const void **)&buffer, &buffer_size); // objc_precise_lifetime guarantees 'map_data' isn't released before memcpy has a chance to do its thing
     assert(buffer_size == sizeof(ref_upacket.size));
     memcpy((void *)&(upacket_len), (const void *)buffer, buffer_size);
-#if PT_DISPATCH_RETAIN_RELEASE
-    dispatch_release(map_data);
-#endif
 
     // Allocate a new usbmux_packet_t for the expected size
     uint32_t payloadLength = upacket_len - (uint32_t)sizeof(usbmux_packet_t);
@@ -535,9 +529,6 @@ static NSString *kPlistPacketTypeConnect = @"Connect";
       PT_PRECISE_LIFETIME_UNUSED dispatch_data_t map_data = dispatch_data_create_map(data, (const void **)&buffer, &buffer_size);
       assert(buffer_size == upacket->size - offset);
       memcpy(((void *)(upacket))+offset, (const void *)buffer, buffer_size);
-#if PT_DISPATCH_RETAIN_RELEASE
-      dispatch_release(map_data);
-#endif
       
       // We only support plist protocol
       if (upacket->protocol != USBMuxPacketProtocolPlist) {
@@ -616,9 +607,6 @@ static NSString *kPlistPacketTypeConnect = @"Connect";
       callback(err);
     }
   });
-#if PT_DISPATCH_RETAIN_RELEASE
-  dispatch_release(data); // Release our ref. A ref is still held by dispatch_io_write
-#endif
 }
 
 #pragma clang diagnostic push

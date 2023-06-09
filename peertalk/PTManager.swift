@@ -15,7 +15,7 @@ protocol PTManagerDelegate {
     func peertalk(shouldAcceptDataOfType type: UInt32) -> Bool
     
     /** Runs when the device has received data */
-    func peertalk(didReceiveData data: Data, ofType type: UInt32)
+    func peertalk(didReceiveData data: Data, ofType type: UInt32, onChannel channel: Any)
     
     /** Runs when the connection has changed */
     func peertalk(didChangeConnection connected: Bool)
@@ -27,13 +27,16 @@ protocol PTManagerDelegate {
     
     class PTManager: NSObject {
         
-        static let instance = PTManager()
+        static var instance = PTManager()
         
         // MARK: Properties
         var delegate: PTManagerDelegate?
         var portNumber: Int?
-        weak var serverChannel: PTChannel?
+        var connectedDeviceID: NSNumber?
         weak var peerChannel: PTChannel?
+        var listenChannel: MYListenChannel?
+        var serverManager = MYServerMananger()
+        var notifyCenter: MYNotifySerializer?
         
         /** Prints out all errors and status updates */
         var debugMode = false
@@ -53,11 +56,10 @@ protocol PTManagerDelegate {
         func connect(portNumber: Int) {
             if !isConnected {
                 self.portNumber = portNumber
-                let channel = PTChannel(delegate: self)
-                channel?.listen(onPort: in_port_t(portNumber), iPv4Address: INADDR_LOOPBACK, callback: { (error) in
-                    if error == nil {
-                        self.serverChannel = channel
-                    }
+                self.listenChannel = MYListenChannel()
+                self.listenChannel?.listen(onPort: in_port_t(portNumber), iPv4Address: INADDR_LOOPBACK, callback: { error in
+                    print(error);
+                    self.notifyCenter = MYNotifySerializer(socketChannel: (self.listenChannel?.firstSocketChannel)!)
                 })
             }
         }
@@ -69,10 +71,8 @@ protocol PTManagerDelegate {
         
         /** Closes the USB connectin */
         func disconnect() {
-            self.serverChannel?.close()
             self.peerChannel?.close()
             peerChannel = nil
-            serverChannel = nil
         }
         
         /** Sends data to the connected device 
@@ -84,6 +84,14 @@ protocol PTManagerDelegate {
                 peerChannel?.sendFrame(ofType: type, tag: PTFrameNoTag, withPayload: (data as NSData).createReferencingDispatchData(), callback: { (error) in
                     completion?(true)
                 })
+            } else {
+                completion?(false)
+            }
+        }
+        
+        func broadcast(data: Data, type: UInt32, completion: ((_ success: Bool) -> Void)? = nil) {
+            if self.notifyCenter != nil {
+                self.notifyCenter?.broadcast(data: data)
             } else {
                 completion?(false)
             }
@@ -113,57 +121,47 @@ protocol PTManagerDelegate {
         
     }
     
-    
-    
     // MARK: - Channel Delegate
-    extension PTManager: PTChannelDelegate {
-        
-        func ioFrameChannel(_ channel: PTChannel!, shouldAcceptFrameOfType type: UInt32, tag: UInt32, payloadSize: UInt32) -> Bool {
-            // Check if the channel is our connected channel; otherwise ignore it
-            if channel != peerChannel {
-                return false
-            } else {
-                return delegate!.peertalk(shouldAcceptDataOfType: type)
-            }
-        }
-        
-        
-        func ioFrameChannel(_ channel: PTChannel!, didReceiveFrameOfType type: UInt32, tag: UInt32, payload: PTData!) {
-            // Creates the data
-            let dispatchData = payload.dispatchData as DispatchData
-            let data = NSData(contentsOfDispatchData: dispatchData as __DispatchData) as Data
-            delegate?.peertalk(didReceiveData: data, ofType: type)
-        }
-        
-        func ioFrameChannel(_ channel: PTChannel!, didEndWithError error: Error?) {
-            printDebug("ERROR (Connection ended): \(String(describing: error?.localizedDescription))")
-            peerChannel = nil
-            serverChannel = nil
-            delegate?.peertalk(didChangeConnection: false)
-        }
-        
-        func ioFrameChannel(_ channel: PTChannel!, didAcceptConnection otherChannel: PTChannel!, from address: PTAddress!) {
-            
-            // Cancel any existing connections
-            if (peerChannel != nil) {
-                peerChannel?.cancel()
-            }
-            
-            // Update the peer channel and information
-            peerChannel = otherChannel
-            peerChannel?.userInfo = address
-            printDebug("SUCCESS (Connected to channel)")
-            delegate?.peertalk(didChangeConnection: true)
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
+//    extension PTManager: PTChannelDelegate {
+//
+//        func ioFrameChannel(_ channel: PTChannel!, shouldAcceptFrameOfType type: UInt32, tag: UInt32, payloadSize: UInt32) -> Bool {
+//            // Check if the channel is our connected channel; otherwise ignore it
+//            if channel != peerChannel {
+//                return false
+//            } else {
+//                return delegate!.peertalk(shouldAcceptDataOfType: type)
+//            }
+//        }
+//
+//
+//        func ioFrameChannel(_ channel: PTChannel!, didReceiveFrameOfType type: UInt32, tag: UInt32, payload: PTData!) {
+//            // Creates the data
+//            let dispatchData = payload.dispatchData as DispatchData
+//            let data = NSData(contentsOfDispatchData: dispatchData as __DispatchData) as Data
+//            delegate?.peertalk(didReceiveData: data, ofType: type, onChannel: channel.userInfo as Any)
+//        }
+//
+//        func ioFrameChannel(_ channel: PTChannel!, didEndWithError error: Error?) {
+//            printDebug("ERROR (Connection ended): \(String(describing: error?.localizedDescription))")
+//            peerChannel = nil
+//            serverChannel = nil
+//            delegate?.peertalk(didChangeConnection: false)
+//        }
+//
+//        func ioFrameChannel(_ channel: PTChannel!, didAcceptConnection otherChannel: PTChannel!, from address: PTAddress!) {
+//
+//            // Cancel any existing connections
+//            if (peerChannel != nil) {
+//                peerChannel?.cancel()
+//            }
+//
+//            // Update the peer channel and information
+//            peerChannel = otherChannel
+//            peerChannel?.userInfo = address
+//            printDebug("SUCCESS (Connected to channel)")
+//            delegate?.peertalk(didChangeConnection: true)
+//        }
+//    }
     
 #elseif os(OSX)
 // MARK: - OS X
@@ -273,12 +271,7 @@ protocol PTManagerDelegate {
             }
         }
     }
-    
-        
-        
-        
-        
-        
+
         // MARK: - Channel Delegate
         extension PTManager: PTChannelDelegate {
             
@@ -292,7 +285,7 @@ protocol PTManagerDelegate {
                 // Creates the data
                 let dispatchData = payload.dispatchData as DispatchData
                 let data = NSData(contentsOfDispatchData: dispatchData as __DispatchData) as Data
-                delegate?.peertalk(didReceiveData: data, ofType: type)
+                delegate?.peertalk(didReceiveData: data, ofType: type, onChannel: channel)
             }
             
             // Connection was ended
@@ -312,9 +305,7 @@ protocol PTManagerDelegate {
             }
             
         }
-    
-        
-        
+
         // MARK: - Helper methods
         extension PTManager {
             
@@ -435,29 +426,23 @@ protocol PTManagerDelegate {
             }
             
         }
-    
-    
 #endif
 
-
-
-
-
 // MARK: - Data extension for conversion
-extension Data {
-    
-    /** Unarchive data into an object. It will be returned as type `Any` but you can cast it into the correct type. */
-    func convert() -> Any {
-        return NSKeyedUnarchiver.unarchiveObject(with: self)!
-    }
-    
-    /** Converts an object into Data using the NSKeyedArchiver */
-    static func toData(object: Any) -> Data {
-        return NSKeyedArchiver.archivedData(withRootObject: object)
-    }
-    
-}
-
+//extension Data {
+//    
+//    /** Unarchive data into an object. It will be returned as type `Any` but you can cast it into the correct type. */
+//    func convert() -> Any {
+//        return NSKeyedUnarchiver.unarchiveObject(with: self)
+//    }
+//    
+//    /** Converts an object into Data using the NSKeyedArchiver */
+//    static func toData(object: Any) -> Data {
+//        return NSKeyedArchiver.archivedData(withRootObject: object)
+//    }
+//    
+//}
+//
 
 
 

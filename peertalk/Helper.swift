@@ -41,7 +41,7 @@ func jsonToData(jsonDic:Dictionary<String, Any>) -> Data? {
     return data
 }
 
-func dataToDictionary(data:Data) -> Dictionary<String, Any>?{
+func dataToJson(data:Data) -> Dictionary<String, Any>?{
     do {
         let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
         let dic = json as! Dictionary<String, Any>

@@ -27,46 +27,23 @@ class MYViewModel: ObservableObject {
                             ChatCellInfo(message: "你叫啥", isMy: true),
                             ChatCellInfo(message: "我叫Lucy", isMy: false)]
     
+//    var requestHandler = PTRequestSerializer()
+    var requestHandler = MYRequestSerializer()
     
     static let instance = MYViewModel()
-    let ptManager = PTManager.instance
+//    let ptManager = PTManager.instance
+    let myConnectManager = MYConnectManager.instance
     var deviceID = Global_deviceID
     
     init() {
-        ptManager.delegate = self
-        ptManager.connect(portNumber: PORT_NUMBER)
+//        ptManager.delegate = self
+//        ptManager.connect(portNumber: PORT_NUMBER)
+        myConnectManager.connect(portNumber: PORT_NUMBER)
     }
     
     func connectAgain() {
-        ptManager.connect(portNumber: PORT_NUMBER)
-    }
-    
-    func sendMessage() {
-        if ptManager.isConnected {
-            ptManager.sendObject(object: sendStr, type: PTType.string.rawValue)
-            logMessage(msg: "send string: \(sendStr)")
-        }
-    }
-    
-    func sendNumber() {
-        if ptManager.isConnected {
-            ptManager.sendObject(object: sendNum, type: PTType.number.rawValue)
-            logMessage(msg: "send num: \(sendNum)")
-        }
-    }
-    
-    func sendDictionary() {
-        if ptManager.isConnected {
-            ptManager.sendData(data: jsonToData(jsonDic: sendDict) ?? Data(), type: PTType.dict.rawValue)
-            logMessage(msg: "send dictionary: \(sendDict)")
-        }
-    }
-    
-    func sendImage() {
-        if ptManager.isConnected {
-            ptManager.sendObject(object: sendImg, type: PTType.image.rawValue)
-            logMessage(msg: "send string: \(sendImg)")
-        }
+//        ptManager.connect(portNumber: PORT_NUMBER)
+        myConnectManager.connect(portNumber: PORT_NUMBER)
     }
     
 //    func sendMessage() {
@@ -76,12 +53,39 @@ class MYViewModel: ObservableObject {
 //        }
 //    }
 //
-//    func sendMessage() {
+//    func sendNumber() {
 //        if ptManager.isConnected {
-//            ptManager.sendObject(object: sendStr, type: PTType.string.rawValue)
-//            logMessage(msg: "send string: \(sendStr)")
+//            ptManager.sendObject(object: sendNum, type: PTType.number.rawValue)
+//            logMessage(msg: "send num: \(sendNum)")
 //        }
 //    }
+    
+    func sendDictionary() {
+//        if ptManager.isConnected {
+            #if os(OSX)
+            myConnectManager.sendData(data: jsonToData(jsonDic: sendDict) ?? Data(), type: PTType.json.rawValue)
+            logMessage(msg: "send dictionary: \(sendDict)")
+            #elseif os(iOS)
+            myConnectManager.notifyCenter?.broadcast(data: jsonToData(jsonDic: sendDict) ?? Data())
+            #endif
+//        }
+    }
+    
+//    func sendImage() {
+//        if ptManager.isConnected {
+//            ptManager.sendObject(object: sendImg, type: PTType.image.rawValue)
+//            logMessage(msg: "send string: \(sendImg)")
+//        }
+//    }
+    
+    func sendTest() {
+//        if ptManager.isConnected {
+            self.requestHandler.request(path: "/getUsers", params: ["":""]) { json in
+                print("成功回调 json \(json)")
+            }
+            logMessage(msg: "send request: getUsers")
+//        }
+    }
 }
 
 extension MYViewModel: PTManagerDelegate {
@@ -89,13 +93,13 @@ extension MYViewModel: PTManagerDelegate {
         return true
     }
     
-    func peertalk(didReceiveData data: Data, ofType type: UInt32) {
+    func peertalk(didReceiveData data: Data, ofType type: UInt32, onChannel channel: Any) {
         if type == PTType.string.rawValue {
-            let result = data.convert() as! String
-            receiveStr = result
-            logMessage(msg: "receive string: \(receiveStr)")
-            let info = ChatCellInfo(message: receiveStr, isMy: false)
-            infos.append(info)
+            if let receiveStr = data.convert() as? String {
+                logMessage(msg: "receive string: \(receiveStr)")
+                let info = ChatCellInfo(message: receiveStr, isMy: false)
+                infos.append(info)
+            }
         } else if type == PTType.number.rawValue {
             let result = data.convert() as! Int
             receiveNum = result
@@ -103,8 +107,8 @@ extension MYViewModel: PTManagerDelegate {
         } else if type == PTType.image.rawValue {
             receiveImg = MYImage(data: data)
             logMessage(msg: "receive img: \(data)")
-        } else if type == PTType.dict.rawValue {
-            let receiveDict = dataToDictionary(data: data)
+        } else if type == PTType.json.rawValue {
+            let receiveDict = dataToJson(data: data)
             logMessage(msg: "receive dict: \(receiveDict)")
         }
     }
